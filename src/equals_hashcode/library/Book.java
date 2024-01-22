@@ -3,10 +3,10 @@ package library;
 public class Book {
     private String title;
     private String author;
-    private int isbn;
+    private String isbn;
     private int publishYear;
 
-    Book (String title, String author, int isbn, int publishYear) {
+    public Book (String title, String author, String isbn, int publishYear) {
         this.title = title;
         this.author = author;
         this.isbn = isbn;
@@ -17,16 +17,32 @@ public class Book {
         return title;
     }
 
-    public int getIsbn() {
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getIsbn() {
         return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
     }
 
     public String getAuthor() {
         return author;
     }
 
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public int getPublishYear() {
         return publishYear;
+    }
+
+    public void setPublishYear(int publishYear) {
+        this.publishYear = publishYear;
     }
 
     @Override
@@ -34,16 +50,12 @@ public class Book {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Book book = (Book) obj;
-        return isbn == book.isbn;
+        return isbn.equals(book.isbn);
     }
 
     @Override
     public int hashCode() {
-        int res = title != null ? title.hashCode() : 0;
-        res = 31 * res + author.hashCode();
-        res = 31 * res + isbn;
-        res = 31 * res + publishYear;
-        return res;
+        return isbn.hashCode();
     }
 
 }
